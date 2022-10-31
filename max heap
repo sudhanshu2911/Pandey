@@ -1,0 +1,91 @@
+import java.io.*;
+import java.util.*;
+class maxheap
+{
+int size;
+int[] heap;
+int maxsize;
+
+maxheap(){
+maxsize=0;
+
+}
+maxheap(int maxsize)
+{
+this.maxsize=maxsize;
+this.size=0;
+heap=new int[this.maxsize+1];
+heap[0]=Integer.MAX_VALUE;
+
+}
+
+
+void swap(int a,int b)
+{
+int temp=heap[a];
+heap[a]=heap[b];
+heap[b]=temp;
+}
+
+
+
+void insert(int element)
+{
+heap[++size]=element;
+int current = size; 
+        while (heap[current] > heap[current/2]) { 
+            swap(current, current/2); 
+            current = current/2; 
+        }
+        } 
+
+void print()
+{
+      int i;
+      for(i=1;i<=maxsize;i++)
+  {
+     System.out.println(heap[i]);
+  }
+}
+boolean search(int value)
+{
+    int i,flag=0;
+    for(i=1;i<=maxsize;i++)
+  { 
+      if(value==heap[i]){
+      flag=1;
+  }
+   }
+   if(flag==1)
+  return true;
+   else 
+   return false;
+  }
+}
+class main
+{
+public static void main(String[] args)
+{
+maxheap n = new maxheap(9); 
+        n.insert(5); 
+        n.insert(3); 
+        n.insert(17); 
+        n.insert(10); 
+        n.insert(84); 
+        n.insert(19); 
+        n.insert(6); 
+        n.insert(22); 
+        n.insert(9); 
+        n.print();
+if(n.search(22))
+System.out.println("Found");
+else
+System.out.println(" not Found");
+if(n.search(12))
+System.out.println("Found");
+else
+System.out.println(" not Found");
+}
+}
+
+
